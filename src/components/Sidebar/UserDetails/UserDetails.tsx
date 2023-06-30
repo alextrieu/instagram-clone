@@ -5,7 +5,7 @@ const UserDetails: React.FC = () => {
   return (
     <div className={styles.userDetailsContainer}>
       <div className={styles.userDetails}>
-        <img src="src/assets/profile-icon.jpeg"></img>
+        <img src="public/assets/profile-icon.jpeg"></img>
         <div className={styles.userName}>
           <span>usaswimming</span>
           <p>Usa Swimming</p>

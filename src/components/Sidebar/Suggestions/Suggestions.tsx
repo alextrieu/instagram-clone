@@ -9,11 +9,11 @@ interface User {
 
 const Suggestions: React.FC = () => {
   const data: User[] = [
-    { username: "nba", profilePic: "src/assets/profile-icon.jpeg" },
-    { username: "twitter", profilePic: "src/assets/profile-icon.jpeg" },
-    { username: "instagram", profilePic: "src/assets/profile-icon.jpeg" },
-    { username: "google", profilePic: "src/assets/profile-icon.jpeg" },
-    { username: "microsoft", profilePic: "src/assets/profile-icon.jpeg" },
+    { username: "nba", profilePic: "public/assets/profile-icon.jpeg" },
+    { username: "twitter", profilePic: "public/assets/profile-icon.jpeg" },
+    { username: "instagram", profilePic: "public/assets/profile-icon.jpeg" },
+    { username: "google", profilePic: "public/assets/profile-icon.jpeg" },
+    { username: "microsoft", profilePic: "public/assets/profile-icon.jpeg" },
   ];
 
   // Map over data, creating a new SuggestionItem for each user

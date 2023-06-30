@@ -11,14 +11,14 @@ import Profile from "./Profile";
 import MoreOptions from "./MoreOptions";
 
 const NavigationBar: React.FC = () => {
-  const [logoSrc, setLogoSrc] = useState("src/assets/Instagram-Wordmark-White-Logo.wine.png");
+  const [logoSrc, setLogoSrc] = useState("public/assets/Instagram-Wordmark-White-Logo.wine.png");
 
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth <= 1145) {
-        setLogoSrc("src/assets/white-ig-logo.png");
+        setLogoSrc("public/assets/white-ig-logo.png");
       } else {
-        setLogoSrc("src/assets/Instagram-Wordmark-White-Logo.wine.png");
+        setLogoSrc("public/assets/Instagram-Wordmark-White-Logo.wine.png");
       }
     }
 

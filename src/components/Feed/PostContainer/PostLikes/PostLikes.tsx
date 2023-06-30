@@ -5,9 +5,9 @@ const PostLikes: React.FC = () => {
   return (
     <div className={styles.likesContainer}>
       <div className={styles.likesProfilePics}>
-        <img src="src/assets/pp-1.jpeg"></img>
-        <img src="src/assets/pp-2.jpeg"></img>
-        <img src="src/assets/pp-3.jpeg"></img>
+        <img src="public/assets/pp-1.jpeg"></img>
+        <img src="public/assets/pp-2.jpeg"></img>
+        <img src="public/assets/pp-3.jpeg"></img>
       </div>
       <div className={styles.likesStats}>
         <span>Liked by </span>

@@ -16,7 +16,7 @@ const NavigationBar: React.FC = () => {
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth <= 1145) {
-        setLogoSrc("public/assets/white-ig-logo.png");
+        setLogoSrc("public/assets/white-ig-log.png");
       } else {
         setLogoSrc("public/assets/Instagram-Wordmark-White-Logo.wine.png");
       }

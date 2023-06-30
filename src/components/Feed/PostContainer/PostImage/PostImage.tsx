@@ -4,7 +4,7 @@ import styles from "../PostContainer.module.css";
 const PostImage: React.FC = () => {
   return (
     <div className={styles.imageContainer}>
-      <img src="public/assets/pic1.jpeg" />
+      <img src="/assets/pic1.jpeg" />
     </div>
   );
 };

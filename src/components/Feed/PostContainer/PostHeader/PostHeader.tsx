@@ -6,7 +6,7 @@ const PostHeader: React.FC = () => {
     <div className={styles.headerContainer}>
       <div className={styles.headerWrapper}>
         <div>
-          <img src="public/assets/profile-icon.jpeg" className={styles.profileIcon} />
+          <img src="/assets/profile-icon.jpeg" className={styles.profileIcon} />
         </div>
         <div>
           <ul className={styles.postMeta}>

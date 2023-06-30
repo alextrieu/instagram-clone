@@ -1,0 +1,87 @@
+.sidebar {
+  flex: 2;
+  /* min-width: 320px; */
+  /* border: 1px solid white; */
+  padding-right: 20px;
+  margin-top: 50px;
+}
+
+/* User Details */
+
+.userDetailsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userDetailsContainer img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+
+.userDetailsContainer a {
+  align-self: center;
+  text-decoration: none;
+  color: rgb(16, 47, 201);
+}
+
+.userDetails {
+  display: flex;
+  gap: 15px;
+}
+
+.userName > p {
+  color: gray;
+}
+
+/* Footer */
+
+.footerContainer {
+  margin-top: 20px;
+  width: 90%;
+}
+
+.footerContainer ul {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 0.4rem;
+  gap: 10px;
+}
+
+.footerContainer ul li:first-child {
+  list-style: none;
+}
+
+.footerContainer ul li {
+  list-style-type: none; /* Remove the default bullet point */
+  display: flex;
+}
+
+.footerContainer ul li::before {
+  content: "•"; /* Add a custom bullet point */
+  font-size: 5px; /* Set its size */
+  padding-right: 5px; /* Add some padding if needed */
+}
+
+.footerContainer a {
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: gray;
+}
+
+/* Copyright */
+
+.copyrightContainer {
+  margin-top: 20px;
+}
+
+.copyrightContainer p {
+  font-size: 0.75rem;
+  color: gray;
+}
+
+@media screen and (max-width: 1320px) {
+  .sidebar {
+    display: none;
+  }
+}

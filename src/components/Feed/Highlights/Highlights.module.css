@@ -1,0 +1,15 @@
+.profilePic {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+}
+
+.userName {
+  font-size: 0.85rem;
+}
+
+.highlightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

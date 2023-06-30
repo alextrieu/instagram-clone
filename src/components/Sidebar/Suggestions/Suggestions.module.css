@@ -1,0 +1,68 @@
+.suggestionsHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.suggestionsTitle {
+  font-size: 0.95rem;
+  color: gray;
+}
+
+.seeAllLink {
+  font-size: 0.8rem;
+  font-weight: bold;
+  align-self: center;
+  text-decoration: none;
+  color: white;
+}
+
+/* SuggestionItem */
+
+.listOfSuggestionsContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.suggestionItem,
+.suggestionDetails {
+  display: flex;
+}
+
+.suggestionItem {
+  justify-content: space-between;
+}
+
+.suggestionDetails {
+  gap: 10px;
+  align-items: center;
+}
+
+.suggestionItem img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.followLink {
+  align-self: center;
+  text-decoration: none;
+  color: blue;
+  font-size: 0.8rem;
+}
+
+.suggestionInfo {
+  line-height: 1rem;
+}
+
+.suggestionInfo p:first-child {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.suggestionInfo p:last-child {
+  font-size: 0.85rem;
+  color: gray;
+}

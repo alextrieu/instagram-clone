@@ -1,0 +1,150 @@
+.container {
+  margin-top: 30px;
+  width: 500px;
+
+  /* Temporary */
+  /* border: 1px solid white;
+  padding: 10px; */
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.container > div:first-child {
+  border-top: none;
+}
+
+/* PostHeader */
+
+.headerContainer,
+.headerWrapper,
+.postMeta {
+  display: flex;
+}
+
+.headerContainer {
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.postMeta {
+  gap: 20px;
+}
+
+.postMeta li:first-child {
+  list-style: none;
+}
+
+.postTimeStamp {
+  color: gray;
+  font-size: 0.8rem;
+  align-self: center;
+}
+
+.profileIcon {
+  height: 40px;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.postProfileName {
+  font-size: 0.95rem;
+}
+
+.moreInfo {
+  align-self: center;
+}
+
+.postLocation {
+  font-size: 0.75rem;
+}
+
+/* PostImage */
+
+.imageContainer img {
+  width: 100%;
+}
+
+/* PostActions */
+
+.actionsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 1.35rem;
+}
+
+.actionsIcons {
+  display: flex;
+  gap: 15px;
+}
+
+/* PostLikes */
+
+.likesContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.likesProfilePics {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.likesProfilePics img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.likesProfilePics img:nth-child(1) {
+  z-index: 3;
+  margin-right: -7px;
+}
+
+.likesProfilePics img:nth-child(2) {
+  z-index: 2;
+  margin-right: -7px;
+}
+
+.likesProfilePics img:nth-child(3) {
+  z-index: 1;
+}
+
+.likesStats {
+  font-size: 0.95rem;
+}
+
+/* PostCaption */
+
+.captionExpandMore {
+  display: block;
+  text-decoration: none;
+  color: gray;
+}
+
+/* Add Comment */
+
+.addCommentContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.commentFormContainer {
+  width: 100%;
+}
+
+.commentFormContainer input {
+  width: inherit;
+  height: 30px;
+  background: none;
+  border: none;
+}
+
+.commentFormContainer input:focus {
+  border: none;
+  outline: none;
+}

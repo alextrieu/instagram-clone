@@ -1,0 +1,34 @@
+.feed {
+  flex: 6;
+  min-width: 630px;
+  margin-left: 250px;
+  margin-top: 50px;
+
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.highlightFeed {
+  max-width: 650px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+@media screen and (max-width: 1145px) {
+  .feed {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .highlightFeed {
+    gap: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

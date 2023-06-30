@@ -1,6 +1,5 @@
 import React from "react";
-import styles from "/Users/work/instagram-clone/src/components/Feed/PostContainer/PostContainer.module.css";
-
+import styles from "../../PostContainer.module.css";
 const AddComment: React.FC = () => {
   return (
     <div className={styles.addCommentContainer}>

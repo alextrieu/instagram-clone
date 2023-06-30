@@ -22,6 +22,7 @@
 @media screen and (max-width: 1145px) {
   .feed {
     margin-left: 0;
+    min-width: 580px;
   }
 }
 

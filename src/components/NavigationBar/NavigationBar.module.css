@@ -28,6 +28,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   display: block;
+  width: 200px;
 }
 
 .link:hover {
@@ -39,6 +40,31 @@
   width: 18px;
   margin-right: 13px;
   margin-left: 10px;
+  position: relative;
+}
+
+.messageNotificationIcon {
+  bottom: 10px;
+  width: 15px;
+  height: 15px;
+  color: white;
+  text-align: center;
+  line-height: 15px;
+  font-size: 8px;
+}
+
+.messageNotificationIcon,
+.generalNotificationIcon {
+  position: absolute;
+  left: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.generalNotificationIcon {
+  bottom: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 @media screen and (max-width: 1145px) {
@@ -47,7 +73,7 @@
   }
 
   .logo img {
-    margin-left: 7px;
+    margin-left: 12px;
   }
 
   .mainLogo {
@@ -56,6 +82,16 @@
 
   .navigation {
     width: 100px;
+  }
+
+  .link {
+    width: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .icon {
+    margin-left: 5px;
   }
 }
 
@@ -78,5 +114,6 @@
 
   .logo img {
     margin-top: 10px;
+    display: none;
   }
 }

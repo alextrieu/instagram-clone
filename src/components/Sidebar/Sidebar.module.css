@@ -22,7 +22,7 @@
 .userDetailsContainer a {
   align-self: center;
   text-decoration: none;
-  color: lightblue;
+  color: #0095f6;
 }
 
 .userDetails {
@@ -48,19 +48,20 @@
   gap: 10px;
 }
 
-.footerContainer ul li:first-child {
-  list-style: none;
+.footerContainer > ul > li:first-child::before {
+  content: "";
+  margin-right: 3px;
 }
 
 .footerContainer ul li {
   list-style-type: none; /* Remove the default bullet point */
   display: flex;
+  gap: 8px;
 }
 
 .footerContainer ul li::before {
   content: "•"; /* Add a custom bullet point */
   font-size: 5px; /* Set its size */
-  padding-right: 5px; /* Add some padding if needed */
 }
 
 .footerContainer a {

@@ -4,7 +4,7 @@ import classNames from "classnames";
 const Home: React.FC = () => {
   return (
     <div>
-      <a href="#" className={styles.link}>
+      <a href="#" className={classNames(styles.link, styles.linkActive)}>
         <i className={classNames(styles.icon, "fa-solid", "fa-house")}></i>
         <span className={styles.fullText}>Home</span>
       </a>

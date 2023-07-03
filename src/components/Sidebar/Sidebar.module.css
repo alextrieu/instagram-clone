@@ -30,8 +30,20 @@
   gap: 15px;
 }
 
+.userName > a {
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .userName > p {
   color: gray;
+}
+
+.highlightBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /* Footer */
@@ -68,6 +80,10 @@
   font-size: 0.75rem;
   text-decoration: none;
   color: gray;
+}
+
+.footerContainer a:hover {
+  text-decoration: underline;
 }
 
 /* Copyright */

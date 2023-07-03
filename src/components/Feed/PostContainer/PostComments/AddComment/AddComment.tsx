@@ -7,9 +7,9 @@ const AddComment: React.FC = () => {
         <input type="text" id="fname" name="fname" placeholder="Add a comment..."></input>
       </form>
 
-      <p>
+      <button className={styles.emojiButton}>
         <i className="fa-regular fa-face-smile"></i>
-      </p>
+      </button>
     </div>
   );
 };

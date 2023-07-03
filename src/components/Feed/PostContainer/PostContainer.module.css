@@ -16,6 +16,15 @@
 
 /* PostHeader */
 
+.postProfilePic {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.headerWrapper {
+  gap: 10px;
+}
 .headerContainer,
 .headerWrapper,
 .postMeta {
@@ -44,22 +53,39 @@
 .profileIcon {
   height: 40px;
   border-radius: 20px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 
 .postProfileName {
   font-size: 0.95rem;
+  margin-bottom: -5px;
+}
+
+.postProfileName a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .moreInfo {
   align-self: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .postLocation {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: white;
 }
 
 /* PostImage */
+
+.imageContainer {
+  cursor: pointer;
+}
 
 .imageContainer img {
   width: 100%;
@@ -71,12 +97,29 @@
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
+  margin-bottom: 5px;
   font-size: 1.35rem;
 }
 
 .actionsIcons {
   display: flex;
   gap: 15px;
+}
+
+.likeIcon,
+.commentIcon,
+.shareIcon,
+.bookmarkIcon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.likeIcon > i,
+.commentIcon > i,
+.shareIcon > i,
+.bookmarkIcon > i {
+  font-size: 1.2rem;
 }
 
 /* PostLikes */
@@ -112,16 +155,42 @@
   z-index: 1;
 }
 
+.profilePicButton,
+.otherLikersButton,
+.likerUsernameButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.otherLikersButton,
+.likerUsernameButton {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .likesStats {
   font-size: 0.95rem;
 }
 
 /* PostCaption */
 
-.captionExpandMore {
-  display: block;
+.profileLinkButton {
   text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.captionExpandMore {
+  /* display: block;
+  text-decoration: none;
+  color: gray; */
+  background-color: transparent;
+  display: block;
+  border: none;
   color: gray;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 /* Add Comment */
@@ -146,4 +215,14 @@
 .commentFormContainer input:focus {
   border: none;
   outline: none;
+}
+
+/* View Comments */
+
+.viewAllComments,
+.emojiButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
 }

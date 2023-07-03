@@ -10,10 +10,12 @@ const Highlights: React.FC = () => {
 
   return (
     <div className={styles.highlightContainer}>
-      <div className={hasActiveStory ? styles.gradientBorder : undefined}>
-        <HighlightCover />
-      </div>
-      <HighlightTitle />
+      <button className={styles.highlightBtn}>
+        <div className={hasActiveStory ? styles.gradientBorder : undefined}>
+          <HighlightCover />
+        </div>
+        <HighlightTitle />
+      </button>
     </div>
   );
 };

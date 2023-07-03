@@ -5,9 +5,11 @@ const UserDetails: React.FC = () => {
   return (
     <div className={styles.userDetailsContainer}>
       <div className={styles.userDetails}>
-        <img src="/assets/profile-icon.jpeg"></img>
+        <button className={styles.highlightBtn}>
+          <img src="/assets/profile-icon.jpeg"></img>
+        </button>
         <div className={styles.userName}>
-          <span>usaswimming</span>
+          <a href="#">usaswimming</a>
           <p>Usa Swimming</p>
         </div>
       </div>

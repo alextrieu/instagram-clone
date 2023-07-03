@@ -66,3 +66,15 @@
   font-size: 0.85rem;
   color: gray;
 }
+
+.profilePicBtn,
+.usernameBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.usernameBtn {
+  font-size: 0.9rem;
+  font-weight: 550;
+}

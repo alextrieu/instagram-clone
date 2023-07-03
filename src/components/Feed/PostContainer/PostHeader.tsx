@@ -5,20 +5,24 @@ const PostHeader: React.FC = () => {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerWrapper}>
-        <div>
+        <button className={styles.postProfilePic}>
           <img src="/assets/profile-icon.jpeg" className={styles.profileIcon} />
-        </div>
+        </button>
         <div>
           <ul className={styles.postMeta}>
-            <li className={styles.postProfileName}>usaswimming</li>
+            <li className={styles.postProfileName}>
+              <a href="#">usaswimming</a>
+            </li>
             <li className={styles.postTimeStamp}>1 hr</li>
           </ul>
-          <p className={styles.postLocation}>Indiana University Nataorium</p>
+          <a href="#" className={styles.postLocation}>
+            Indiana University Nataorium
+          </a>
         </div>
       </div>
-      <div className={styles.moreInfo}>
+      <button className={styles.moreInfo}>
         <i className="fa-solid fa-ellipsis"></i>
-      </div>
+      </button>
     </div>
   );
 };

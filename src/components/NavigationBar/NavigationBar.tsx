@@ -33,7 +33,9 @@ const NavigationBar: React.FC = () => {
     <div className={styles.navigation}>
       <div className={styles.navigationLinks}>
         <div className={styles.logo}>
-          <img src={logoSrc} className={styles.mainLogo}></img>
+          <a href="#">
+            <img src={logoSrc} className={styles.mainLogo}></img>
+          </a>
         </div>
         <Home />
         <Search />

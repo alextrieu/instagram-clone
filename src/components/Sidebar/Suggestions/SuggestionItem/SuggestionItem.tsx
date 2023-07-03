@@ -12,9 +12,11 @@ const SuggestionItem: React.FC<SuggestionItemProps> = ({ userData }) => {
   return (
     <div className={styles.suggestionItem}>
       <div className={styles.suggestionDetails}>
-        <img src={userData.profilePic}></img>
+        <button className={styles.profilePicBtn}>
+          <img src={userData.profilePic}></img>
+        </button>
         <div className={styles.suggestionInfo}>
-          <p>{userData.username}</p>
+          <button className={styles.usernameBtn}>{userData.username}</button>
           <p>followed by nike</p>
         </div>
       </div>

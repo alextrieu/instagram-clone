@@ -5,7 +5,8 @@ import HighlightCover from "./HighlightCover/HighlightCover";
 import HighlightTitle from "./HighlightTitle/HighlightTitle";
 
 const Highlights: React.FC = () => {
-  const [hasActiveStory, setHasActiveStory] = React.useState(true);
+  // const [hasActiveStory, setHasActiveStory] = React.useState(true);
+  let hasActiveStory = true;
 
   return (
     <div className={styles.highlightContainer}>

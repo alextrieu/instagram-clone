@@ -1,10 +1,15 @@
 import React from "react";
 import styles from "./Feed.module.css";
+import { Post } from "../../data/MockData";
 
 import PostContainer from "./PostContainer/PostContainer";
 import Highlights from "./Highlights/Highlights";
 
-const Feed: React.FC = () => {
+type FeedProps = {
+  postsData: Post[];
+};
+
+const Feed: React.FC<FeedProps> = ({ postsData }) => {
   return (
     <div className={styles.feed}>
       <div className={styles.highlightFeed}>
@@ -18,12 +23,11 @@ const Feed: React.FC = () => {
         <Highlights />
       </div>
       <ul className={styles.postList}>
-        <li className={styles.postListItem}>
-          <PostContainer />
-        </li>
-        <li className={styles.postListItem}>
-          <PostContainer />
-        </li>
+        {postsData.map((post, index) => (
+          <li key={index} className={styles.postListItem}>
+            <PostContainer postData={post} />
+          </li>
+        ))}
       </ul>
     </div>
   );

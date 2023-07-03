@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./PostContainer.module.css";
 
-const PostCaption: React.FC = () => {
+type PostCaptionProps = {
+  username: string;
+  caption: string;
+};
+
+const PostCaption: React.FC<PostCaptionProps> = ({ caption, username }) => {
+  const [isExpanded, setExpanded] = useState(false);
+  const maxLength = 80;
+
+  function handleExpandClick() {
+    setExpanded(!isExpanded);
+  }
+
   return (
     <div>
       <a href="#" className={styles.profileLinkButton}>
         {" "}
-        <span style={{ fontWeight: "bold" }}>usaswimming </span>
+        <span style={{ fontWeight: "bold" }}>{username} </span>
       </a>
-      <span>
-        Flyin to Fukuoka 💪 Six men punched their tickets to the 2023 @world_aquatics championships last night.
-      </span>
-      <button className={styles.captionExpandMore}>more</button>
+      {isExpanded ? caption : <span>{caption.substring(0, maxLength)}</span>}
+      {!isExpanded && (
+        <button onClick={handleExpandClick} className={styles.captionExpandMore}>
+          more
+        </button>
+      )}
     </div>
   );
 };

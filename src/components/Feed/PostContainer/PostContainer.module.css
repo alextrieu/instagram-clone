@@ -44,6 +44,12 @@
   list-style: none;
 }
 
+.postMeta li:last-child {
+  font-size: 0.9rem;
+  list-style-type: disc;
+  margin-top: 1px;
+}
+
 .postTimeStamp {
   color: gray;
   font-size: 0.8rem;
@@ -225,4 +231,8 @@
   border: none;
   cursor: pointer;
   font-size: 1rem;
+}
+
+.viewAllComments {
+  color: gray;
 }

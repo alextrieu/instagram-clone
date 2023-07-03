@@ -1,22 +1,28 @@
 import React from "react";
 import styles from "./PostContainer.module.css";
 
-const PostHeader: React.FC = () => {
+type PostHeaderProps = {
+  username: string;
+  profilePic: string;
+  location: string;
+};
+
+const PostHeader: React.FC<PostHeaderProps> = ({ username, profilePic, location }) => {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerWrapper}>
         <button className={styles.postProfilePic}>
-          <img src="/assets/profile-icon.jpeg" className={styles.profileIcon} />
+          <img src={profilePic} className={styles.profileIcon} />
         </button>
         <div>
           <ul className={styles.postMeta}>
             <li className={styles.postProfileName}>
-              <a href="#">usaswimming</a>
+              <a href="#">{username}</a>
             </li>
             <li className={styles.postTimeStamp}>1 hr</li>
           </ul>
           <a href="#" className={styles.postLocation}>
-            Indiana University Nataorium
+            {location}
           </a>
         </div>
       </div>

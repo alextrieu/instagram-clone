@@ -1,10 +1,14 @@
 import React from "react";
 import styles from "./PostContainer.module.css";
 
-const PostImage: React.FC = () => {
+type PostImageProps = {
+  image: string;
+};
+
+const PostImage: React.FC<PostImageProps> = ({ image }) => {
   return (
     <div className={styles.imageContainer}>
-      <img src="/assets/pic1.jpeg" />
+      <img src={image} />
     </div>
   );
 };

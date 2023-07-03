@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../PostContainer.module.css";
+import styles from "./PostContainer.module.css";
 
 const PostImage: React.FC = () => {
   return (

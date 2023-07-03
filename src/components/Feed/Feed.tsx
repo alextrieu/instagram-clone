@@ -17,8 +17,14 @@ const Feed: React.FC = () => {
         <Highlights />
         <Highlights />
       </div>
-      <PostContainer />
-      <PostContainer />
+      <ul className={styles.postList}>
+        <li className={styles.postListItem}>
+          <PostContainer />
+        </li>
+        <li className={styles.postListItem}>
+          <PostContainer />
+        </li>
+      </ul>
     </div>
   );
 };

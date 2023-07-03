@@ -10,14 +10,14 @@ import PostComments from "./PostComments/PostComments";
 
 const PostContainer: React.FC = () => {
   return (
-    <div className={styles.container}>
+    <article className={styles.container}>
       <PostHeader />
       <PostImage />
       <PostActions />
       <PostLikes />
       <PostCaption />
       <PostComments />
-    </div>
+    </article>
   );
 };
 

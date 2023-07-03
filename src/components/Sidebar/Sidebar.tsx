@@ -8,12 +8,12 @@ import Copyright from "./Copyright/Copyright";
 
 const Sidebar: React.FC = () => {
   return (
-    <div className={styles.sidebar}>
+    <aside className={styles.sidebar}>
       <UserDetails />
       <Suggestions />
       <Footer />
       <Copyright />
-    </div>
+    </aside>
   );
 };
 

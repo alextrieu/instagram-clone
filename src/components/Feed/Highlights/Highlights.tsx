@@ -9,14 +9,14 @@ const Highlights: React.FC = () => {
   let hasActiveStory = true;
 
   return (
-    <div className={styles.highlightContainer}>
+    <header className={styles.highlightContainer}>
       <button className={styles.highlightBtn}>
         <div className={hasActiveStory ? styles.gradientBorder : undefined}>
           <HighlightCover />
         </div>
         <HighlightTitle />
       </button>
-    </div>
+    </header>
   );
 };
 

@@ -30,7 +30,7 @@ const NavigationBar: React.FC = () => {
   }, []);
 
   return (
-    <div className={styles.navigation}>
+    <nav className={styles.navigation}>
       <div className={styles.navigationLinks}>
         <div className={styles.logo}>
           <a href="#">
@@ -47,7 +47,7 @@ const NavigationBar: React.FC = () => {
         <Profile />
       </div>
       <MoreOptions />
-    </div>
+    </nav>
   );
 };
 

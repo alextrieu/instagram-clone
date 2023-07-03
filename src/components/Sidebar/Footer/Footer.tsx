@@ -3,7 +3,7 @@ import styles from "../Sidebar.module.css";
 
 const Footer: React.FC = () => {
   return (
-    <div className={styles.footerContainer}>
+    <footer className={styles.footerContainer}>
       <ul>
         <li>
           <a href="#">About</a>
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
           <a href="#">Meta Verified</a>
         </li>
       </ul>
-    </div>
+    </footer>
   );
 };
 

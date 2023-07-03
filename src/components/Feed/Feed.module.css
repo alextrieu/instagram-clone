@@ -4,7 +4,6 @@
   margin-left: 250px;
   margin-top: 50px;
 
-  /* Flexbox */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -17,6 +16,10 @@
   display: flex;
   justify-content: space-between;
   gap: 5px;
+}
+
+.postListItem {
+  list-style: none;
 }
 
 @media screen and (max-width: 1145px) {

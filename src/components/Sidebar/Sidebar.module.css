@@ -38,6 +38,10 @@
 
 .userName > p {
   color: gray;
+  margin-top: -5px;
+}
+.userName {
+  align-self: center;
 }
 
 .highlightBtn {

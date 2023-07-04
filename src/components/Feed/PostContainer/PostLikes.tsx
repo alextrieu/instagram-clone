@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./PostContainer.module.css";
-import { User } from "../../../data/MockData";
+import { User } from "../../../types/PostTypes";
 
 type PostLikesProps = {
   username: string;

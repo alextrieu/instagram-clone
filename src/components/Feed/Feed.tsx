@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Feed.module.css";
-import { Post } from "../../data/MockData";
+import { Post } from "../../types/PostTypes";
 
 import PostContainer from "./PostContainer/PostContainer";
 import Highlights from "./Highlights/Highlights";

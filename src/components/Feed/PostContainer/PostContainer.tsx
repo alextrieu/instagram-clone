@@ -8,7 +8,7 @@ import PostLikes from "./PostLikes";
 import PostCaption from "./PostCaption";
 import PostComments from "./PostComments/PostComments";
 
-import { Post } from "../../../data/MockData";
+import { Post } from "../../../types/PostTypes";
 
 type FeedProps = {
   data: Post;

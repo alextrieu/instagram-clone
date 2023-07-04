@@ -1,7 +1,8 @@
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Feed from "./components/Feed/Feed";
 import Sidebar from "./components/Sidebar/Sidebar";
-import generatePostData, { Post } from "./data/MockData";
+import generatePostData from "./data/MockData";
+import { Post } from "./types/PostTypes";
 import "./styles/App.css";
 
 function usePosts(count: number): Post[] {

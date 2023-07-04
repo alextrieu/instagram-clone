@@ -11,21 +11,17 @@ import PostComments from "./PostComments/PostComments";
 import { Post } from "../../../data/MockData";
 
 type FeedProps = {
-  postData: Post;
+  data: Post;
 };
 
-const PostContainer: React.FC<FeedProps> = ({ postData }) => {
+const PostContainer: React.FC<FeedProps> = ({ data }) => {
   return (
     <article className={styles.container}>
-      <PostHeader
-        username={postData.user.username}
-        profilePic={postData.user.profilePic}
-        location={postData.location}
-      />
-      <PostImage image={postData.image} />
+      <PostHeader username={data.user.username} profilePic={data.user.profilePic} location={data.location} />
+      <PostImage image={data.image} />
       <PostActions />
-      <PostLikes username={postData.user.username} profilePics={postData.likes} />
-      <PostCaption caption={postData.caption} username={postData.user.username} />
+      <PostLikes username={data.user.username} profilePics={data.likes} />
+      <PostCaption caption={data.caption} username={data.user.username} />
       <PostComments />
     </article>
   );

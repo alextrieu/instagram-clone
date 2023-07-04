@@ -6,10 +6,10 @@ import PostContainer from "./PostContainer/PostContainer";
 import Highlights from "./Highlights/Highlights";
 
 type FeedProps = {
-  postsData: Post[];
+  data: Post[];
 };
 
-const Feed: React.FC<FeedProps> = ({ postsData }) => {
+const Feed: React.FC<FeedProps> = ({ data }) => {
   return (
     <div className={styles.feed}>
       <div className={styles.highlightFeed}>
@@ -23,9 +23,9 @@ const Feed: React.FC<FeedProps> = ({ postsData }) => {
         <Highlights />
       </div>
       <ul className={styles.postList}>
-        {postsData.map((post, index) => (
+        {data.map((post, index) => (
           <li key={index} className={styles.postListItem}>
-            <PostContainer postData={post} />
+            <PostContainer data={post} />
           </li>
         ))}
       </ul>

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Feed from "./components/Feed/Feed";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -15,7 +14,7 @@ function App() {
   return (
     <main className="app-container">
       <NavigationBar />
-      <Feed postsData={posts} />
+      <Feed data={posts} />
       <Sidebar />
     </main>
   );

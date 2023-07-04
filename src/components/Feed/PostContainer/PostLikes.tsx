@@ -13,7 +13,7 @@ const PostLikes: React.FC<PostLikesProps> = ({ username, profilePics }) => {
       <div className={styles.likesProfilePics}>
         {profilePics.map((pic, index) => (
           <button key={index} className={styles.profilePicButton}>
-            <img src={pic.profilePic}></img>
+            <img src={pic.profilePic} />
           </button>
         ))}
       </div>

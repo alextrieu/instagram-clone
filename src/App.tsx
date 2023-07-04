@@ -6,13 +6,7 @@ import generatePostData, { Post } from "./data/MockData";
 import "./styles/App.css";
 
 function usePosts(count: number): Post[] {
-  const [posts, setPosts] = useState<Post[]>([]);
-
-  useEffect(() => {
-    const newPosts = Array(count).fill(null).map(generatePostData);
-    setPosts(newPosts);
-  }, [count]);
-
+  const posts = Array(count).fill(null).map(generatePostData);
   return posts;
 }
 

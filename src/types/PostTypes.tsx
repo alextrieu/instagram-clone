@@ -17,3 +17,9 @@ export type Post = {
   comments: Comment[];
   timestamp: Date;
 };
+
+const Hello: React.FC = () => {
+  return <div>hi</div>;
+};
+
+export default Hello;

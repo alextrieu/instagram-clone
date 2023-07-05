@@ -9,7 +9,7 @@ const PostCaption: React.FC<PostCaptionProps> = ({ caption, username }) => {
   const maxLength = 80;
 
   function handleExpandClick() {
-    setExpanded(!isExpanded);
+    setExpanded((prev) => !prev);
   }
 
   return (

@@ -3,7 +3,7 @@ import styles from "./PostContainer.module.css";
 import { User } from "../../../types/PostTypes";
 
 type PostLikesProps = {
-  username: string;
+  username: User[];
   profilePics: User[];
 };
 
@@ -19,7 +19,7 @@ const PostLikes: React.FC<PostLikesProps> = ({ username, profilePics }) => {
       </div>
       <div className={styles.likesStats}>
         <span>Liked by </span>
-        <button className={styles.likerUsernameButton}>{username}</button>
+        <button className={styles.likerUsernameButton}>{username[0].username}</button>
         {" and "}
         <button className={styles.otherLikersButton}>
           <span>others</span>

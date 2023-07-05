@@ -16,7 +16,7 @@ const PostCaption: React.FC<PostCaptionProps> = ({ caption, username }) => {
     <div>
       <a href="#" className={styles.profileLinkButton}>
         {" "}
-        <strong>{username}</strong>
+        <strong>{username} </strong>
       </a>
       {isExpanded ? caption : <span>{caption.substring(0, maxLength)}</span>}
       {!isExpanded && (

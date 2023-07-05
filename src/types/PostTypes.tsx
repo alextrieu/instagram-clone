@@ -8,6 +8,7 @@ type Comment = {
 export type User = {
   username: string;
   profilePic: string;
+  storyImages?: string[];
 };
 
 export type Post = {

@@ -3,8 +3,13 @@ import styles from "./Highlights.module.css";
 
 import HighlightCover from "./HighlightCover/HighlightCover";
 import HighlightTitle from "./HighlightTitle/HighlightTitle";
+import { Post } from "../../../types/PostTypes";
 
-const Highlights: React.FC = () => {
+type HighlightProps = {
+  data: Post;
+};
+
+const Highlights: React.FC<HighlightProps> = ({ data }) => {
   // const [hasActiveStory, setHasActiveStory] = React.useState(true);
   let hasActiveStory = true;
 
@@ -12,9 +17,9 @@ const Highlights: React.FC = () => {
     <header className={styles.highlightContainer}>
       <button className={styles.highlightBtn}>
         <div className={hasActiveStory ? styles.gradientBorder : undefined}>
-          <HighlightCover />
+          <HighlightCover data={data} />
         </div>
-        <HighlightTitle />
+        <HighlightTitle data={data} />
       </button>
     </header>
   );

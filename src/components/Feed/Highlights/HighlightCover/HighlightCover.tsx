@@ -1,8 +1,13 @@
 import React from "react";
 import styles from "../Highlights.module.css";
+import { Post } from "../../../../types/PostTypes";
 
-const HighlightCover: React.FC = () => {
-  return <img src="/assets/profile-icon.jpeg" className={styles.profilePic}></img>;
+type HighlightCoverProps = {
+  data: Post;
+};
+
+const HighlightCover: React.FC<HighlightCoverProps> = ({ data }) => {
+  return <img src={data.user.profilePic} className={styles.profilePic}></img>;
 };
 
 export default HighlightCover;

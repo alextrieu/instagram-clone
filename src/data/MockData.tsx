@@ -6,6 +6,7 @@ const generatePostData = (): Post => {
     user: {
       username: faker.internet.userName().toLocaleLowerCase(),
       profilePic: faker.image.avatar(),
+      storyImages: Array.from({ length: 3 }, () => faker.image.url()),
     },
     location: faker.location.city(),
     image: faker.image.url(),

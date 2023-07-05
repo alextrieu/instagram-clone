@@ -13,14 +13,9 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
   return (
     <div className={styles.feed}>
       <div className={styles.highlightFeed}>
-        <Highlights />
-        <Highlights />
-        <Highlights />
-        <Highlights />
-        <Highlights />
-        <Highlights />
-        <Highlights />
-        <Highlights />
+        {data.slice(0, 8).map((obj, index) => (
+          <Highlights key={index} data={obj} />
+        ))}
       </div>
       <ul className={styles.postList}>
         {data.map((post, index) => (

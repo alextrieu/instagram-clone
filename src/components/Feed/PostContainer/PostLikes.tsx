@@ -3,15 +3,14 @@ import styles from "./PostContainer.module.css";
 import { User } from "../../../types/PostTypes";
 
 type PostLikesProps = {
-  username: User[];
-  profilePics: User[];
+  data: User[];
 };
 
-const PostLikes: React.FC<PostLikesProps> = ({ username, profilePics }) => {
+const PostLikes: React.FC<PostLikesProps> = ({ data }) => {
   return (
     <div className={styles.likesContainer}>
       <div className={styles.likesProfilePics}>
-        {profilePics.map((pic, index) => (
+        {data.map((pic, index) => (
           <button key={index} className={styles.profilePicButton}>
             <img src={pic.profilePic} />
           </button>
@@ -19,7 +18,7 @@ const PostLikes: React.FC<PostLikesProps> = ({ username, profilePics }) => {
       </div>
       <div className={styles.likesStats}>
         <span>Liked by </span>
-        <button className={styles.likerUsernameButton}>{username[0].username}</button>
+        <button className={styles.likerUsernameButton}>{data[0].username}</button>
         {" and "}
         <button className={styles.otherLikersButton}>
           <span>others</span>

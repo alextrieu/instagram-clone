@@ -20,7 +20,7 @@ const PostContainer: React.FC<FeedProps> = ({ data }) => {
       <PostHeader username={data.user.username} profilePic={data.user.profilePic} location={data.location} />
       <PostImage image={data.image} />
       <PostActions />
-      <PostLikes username={data.likes} profilePics={data.likes} />
+      <PostLikes data={data.likes} />
       <PostCaption caption={data.caption} username={data.user.username} />
       <PostComments />
     </article>

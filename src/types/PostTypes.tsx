@@ -3,6 +3,8 @@ type Comment = {
   commentText: string;
 };
 
+// type Comment = Pick<User, "username"> & { commentText: string };
+
 export type User = {
   username: string;
   profilePic: string;
@@ -17,9 +19,3 @@ export type Post = {
   comments: Comment[];
   timestamp: Date;
 };
-
-const Hello: React.FC = () => {
-  return <div>hi</div>;
-};
-
-export default Hello;

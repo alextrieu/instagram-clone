@@ -6,7 +6,13 @@ import Suggestions from "./Suggestions/Suggestions";
 import Footer from "./Footer/Footer";
 import Copyright from "./Copyright/Copyright";
 
-const Sidebar: React.FC = () => {
+import { Post } from "../../types/PostTypes";
+
+type SidebarProps = {
+  data: Post[];
+};
+
+const Sidebar: React.FC<SidebarProps> = ({ data }) => {
   return (
     <aside className={styles.sidebar}>
       <UserDetails />

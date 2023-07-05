@@ -16,7 +16,7 @@ function App() {
     <main className="app-container">
       <NavigationBar />
       <Feed data={posts} />
-      <Sidebar />
+      <Sidebar data={posts} />
     </main>
   );
 }

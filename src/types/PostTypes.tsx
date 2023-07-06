@@ -9,7 +9,10 @@ export type User = {
   username: string;
   profilePic: string;
   storyImages?: string[];
+  name?: string;
 };
+
+export type CurrentUser = Pick<User, "username" | "profilePic" | "name">;
 
 export type Post = {
   user: User;

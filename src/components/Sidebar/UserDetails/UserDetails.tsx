@@ -1,16 +1,22 @@
 import React from "react";
 import styles from "../Sidebar.module.css";
 
-const UserDetails: React.FC = () => {
+import { User } from "../../../types/PostTypes";
+
+type UserDetailsProps = {
+  currentUser: User;
+};
+
+const UserDetails: React.FC<UserDetailsProps> = ({ currentUser }) => {
   return (
     <div className={styles.userDetailsContainer}>
       <div className={styles.userDetails}>
         <button className={styles.highlightBtn}>
-          <img src="/assets/profile-icon.jpeg"></img>
+          <img src={currentUser.profilePic}></img>
         </button>
         <div className={styles.userName}>
-          <a href="#">usaswimming</a>
-          <p>Usa Swimming</p>
+          <a href="#">{currentUser.username}</a>
+          <p>{currentUser.name}</p>
         </div>
       </div>
 

@@ -8,11 +8,7 @@ import Copyright from "./Copyright/Copyright";
 
 import { User } from "../../types/PostTypes";
 
-type SidebarProps = {
-  currentUser: User;
-};
-
-const Sidebar: React.FC<SidebarProps> = ({ currentUser }) => {
+const Sidebar: React.FC = ({ currentUser }) => {
   return (
     <aside className={styles.sidebar}>
       <UserDetails currentUser={currentUser} />

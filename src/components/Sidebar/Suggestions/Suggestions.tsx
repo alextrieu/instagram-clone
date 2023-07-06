@@ -1,22 +1,11 @@
 import React from "react";
 import styles from "./Suggestions.module.css";
 import SuggestionItem from "./SuggestionItem/SuggestionItem";
-
-interface User {
-  username: string;
-  profilePic: string;
-}
+import { SuggestUser } from "../../../types/PostTypes";
+import { generateSuggestUser } from "../../../data/MockData";
 
 const Suggestions: React.FC = () => {
-  const data: User[] = [
-    { username: "nba", profilePic: "/assets/profile-icon.jpeg" },
-    { username: "twitter", profilePic: "/assets/profile-icon.jpeg" },
-    { username: "instagram", profilePic: "/assets/profile-icon.jpeg" },
-    { username: "google", profilePic: "/assets/profile-icon.jpeg" },
-    { username: "microsoft", profilePic: "/assets/profile-icon.jpeg" },
-  ];
-
-  // Map over data, creating a new SuggestionItem for each user
+  const suggestUsers: SuggestUser[] = Array.from({ length: 5 }, () => generateSuggestUser());
 
   return (
     <div className={styles.suggestionsContainer}>
@@ -28,8 +17,8 @@ const Suggestions: React.FC = () => {
       </div>
 
       <div className={styles.listOfSuggestionsContainer}>
-        {data.map((suggestion: User, index: number) => (
-          <SuggestionItem key={index} userData={suggestion} />
+        {suggestUsers.map((user, index) => (
+          <SuggestionItem key={index} user={user} />
         ))}
       </div>
     </div>

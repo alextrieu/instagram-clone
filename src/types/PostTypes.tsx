@@ -13,6 +13,7 @@ export type User = {
 };
 
 export type CurrentUser = Pick<User, "username" | "profilePic" | "name">;
+export type SuggestUser = User;
 
 export type Post = {
   user: User;

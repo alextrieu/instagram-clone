@@ -1,7 +1,15 @@
 import { faker } from "@faker-js/faker";
-import { Post, CurrentUser } from "../types/PostTypes";
+import { Post, CurrentUser, SuggestUser } from "../types/PostTypes";
 
 export const generateCurrentUser = (): CurrentUser => {
+  return {
+    username: faker.internet.userName().toLocaleLowerCase(),
+    profilePic: faker.image.url(),
+    name: faker.person.fullName(),
+  };
+};
+
+export const generateSuggestUser = (): SuggestUser => {
   return {
     username: faker.internet.userName().toLocaleLowerCase(),
     profilePic: faker.image.url(),

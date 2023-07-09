@@ -1,10 +1,6 @@
 .container {
   margin-top: 30px;
   width: 500px;
-
-  /* Temporary */
-  /* border: 1px solid white;
-  padding: 10px; */
   border-bottom: 1px solid gray;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -12,6 +8,11 @@
 
 .container > div:first-child {
   border-top: none;
+}
+
+.noScroll {
+  overflow: hidden;
+  height: 100%;
 }
 
 /* PostHeader */
@@ -34,6 +35,10 @@
 .headerContainer {
   justify-content: space-between;
   margin-bottom: 5px;
+}
+
+.postMetaContainer {
+  align-self: center;
 }
 
 .postMeta {

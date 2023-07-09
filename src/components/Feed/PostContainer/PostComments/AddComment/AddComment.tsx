@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../PostContainer.module.css";
+
 const AddComment: React.FC = () => {
   return (
     <div className={styles.addCommentContainer}>

@@ -31,8 +31,9 @@ const generatePostData = (): Post => {
       username: faker.internet.userName().toLocaleLowerCase(),
       profilePic: faker.image.avatar(),
     })),
-    comments: Array.from({ length: 3 }, () => ({
+    comments: Array.from({ length: 5 }, () => ({
       username: faker.internet.userName().toLocaleLowerCase(),
+      profilePic: faker.image.avatar(),
       commentText: faker.lorem.lines(),
     })),
     timestamp: faker.date.recent(),

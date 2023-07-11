@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../PostContainer.module.css";
+import CommentModal from "../../CommentModal/CommentModal";
+import { Post } from "../../../../../types/PostTypes";
 
-// import styles from "/Users/work/instagram-clone/src/components/Feed/PostContainer/PostContainer.module.css";
+type ViewCommentsProps = {
+  data: Post;
+};
+const ViewComments: React.FC<ViewCommentsProps> = ({ data }) => {
+  const [isToggled, setIsToggled] = useState(false);
 
-const ViewComments: React.FC = () => {
-  return <button className={styles.viewAllComments}>View all 2 comments</button>;
+  useEffect(() => {
+    if (isToggled) {
+      document.body.classList.add(styles.noScroll);
+    } else {
+      document.body.classList.remove(styles.noScroll);
+    }
+    return () => document.body.classList.remove(styles.noScroll);
+  }, [isToggled]);
+
+  return (
+    <>
+      <button className={styles.viewAllComments} onClick={() => setIsToggled((prev) => !prev)}>
+        View all 2 comments
+      </button>
+      {isToggled && <CommentModal data={data} setIsToggled={setIsToggled} />}
+    </>
+  );
 };
 
 export default ViewComments;

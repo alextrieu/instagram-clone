@@ -1,11 +1,16 @@
 import React from "react";
 import AddComment from "./AddComment/AddComment";
 import ViewComments from "./ViewComments/ViewComments";
+import { Post } from "../../../../types/PostTypes";
 
-const PostComments: React.FC = () => {
+type PostCommentsProps = {
+  data: Post;
+};
+
+const PostComments: React.FC<PostCommentsProps> = ({ data }) => {
   return (
     <div>
-      <ViewComments />
+      <ViewComments data={data} />
       <AddComment />
     </div>
   );

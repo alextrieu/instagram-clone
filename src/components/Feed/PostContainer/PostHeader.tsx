@@ -4,7 +4,7 @@ import styles from "./PostContainer.module.css";
 type PostHeaderProps = {
   username: string;
   profilePic: string;
-  location: string;
+  location?: string;
 };
 
 const PostHeader: React.FC<PostHeaderProps> = ({ username, profilePic, location }) => {
@@ -14,7 +14,7 @@ const PostHeader: React.FC<PostHeaderProps> = ({ username, profilePic, location 
         <button className={styles.postProfilePic}>
           <img src={profilePic} className={styles.profileIcon} />
         </button>
-        <div>
+        <div className={styles.postMetaContainer}>
           <ul className={styles.postMeta}>
             <li className={styles.postProfileName}>
               <a href="#">{username}</a>

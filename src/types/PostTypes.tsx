@@ -1,6 +1,7 @@
 type Comment = {
   username: string;
   commentText: string;
+  profilePic: string;
 };
 
 // type Comment = Pick<User, "username"> & { commentText: string };

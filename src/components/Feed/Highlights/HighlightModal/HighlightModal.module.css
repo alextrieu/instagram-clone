@@ -1,0 +1,127 @@
+.modalContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(35, 35, 35);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modalContent {
+  border: 1px solid white;
+  border-radius: 8px;
+  height: 75vh;
+  width: 400px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 800px) {
+  .modalContent {
+    height: 90vh;
+  }
+}
+
+.modalContent > header,
+.userDetails,
+.modalControls {
+  display: flex;
+}
+
+.modalContent > header {
+  justify-content: space-between;
+}
+
+.modalControls {
+  gap: 15px;
+  align-items: center;
+}
+
+.userDetails {
+  gap: 10px;
+}
+
+.userDetails > img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.userDetails > p {
+  font-size: 0.875rem;
+  align-self: center;
+}
+
+.userDetails > p:last-child {
+  color: gray;
+}
+
+.progressContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 3px;
+  margin-bottom: 15px;
+}
+
+.progressBar {
+  flex: 1;
+  margin-right: 4px;
+}
+
+.progressBar:last-child {
+  margin-right: 0;
+}
+
+.imageContainer {
+  flex: 1;
+}
+
+.imageContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.modalFooter {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  position: relative;
+}
+
+.highlightCommentBtn {
+  position: absolute;
+  top: 9px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-weight: bolder;
+}
+
+.modalFooter > input {
+  flex: 1;
+  height: 35px;
+  border-radius: 12px;
+  outline: none;
+  border: 1px solid white;
+  background: transparent;
+  padding-left: 15px;
+}
+
+.modalFooter > input::placeholder {
+  color: white;
+}
+
+.modalFooter > i {
+  font-size: 1.25rem;
+}

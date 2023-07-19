@@ -85,16 +85,6 @@
   margin-right: 0;
 }
 
-/* .imageContainer {
-  flex: 1;
-}
-
-.imageContainer img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-} */
-
 .modalFooter {
   margin-top: 20px;
   display: flex;
@@ -129,4 +119,15 @@
 
 .modalFooter > i {
   font-size: 1.25rem;
+}
+
+.exitBotton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 8px;
+  margin-top: 8px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-weight: bold;
 }

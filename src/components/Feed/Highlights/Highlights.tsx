@@ -14,9 +14,9 @@ const Highlights: React.FC<HighlightProps> = ({ data }) => {
   let hasActiveStory = true;
   const [modalOpen, setModalOpen] = useState(false);
 
-  function handleClick() {
+  const handleClick: React.MouseEventHandler<HTMLDivElement> = () => {
     setModalOpen((prev) => !prev);
-  }
+  };
 
   return (
     <div className={styles.highlightWrapper}>
@@ -29,7 +29,7 @@ const Highlights: React.FC<HighlightProps> = ({ data }) => {
         </button>
       </header>
 
-      {modalOpen && <HighlightModal data={data} />}
+      {modalOpen && <HighlightModal data={data} handleClick={handleClick} />}
     </div>
   );
 };

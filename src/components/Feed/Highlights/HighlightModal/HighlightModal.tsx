@@ -4,9 +4,10 @@ import styles from "./HighlightModal.module.css";
 
 type HighlightModalProps = {
   data: Post;
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
 };
 
-const HighlightModal: React.FC<HighlightModalProps> = ({ data }) => {
+const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) => {
   const [currentImageIndex, setcurrentImageIndex] = useState(0);
   const [inputClicked, setInputClicked] = useState(false);
   const [inputValue, setInputVallue] = useState("");
@@ -22,19 +23,15 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data }) => {
   }
 
   useEffect(() => {
-    // Interval that advances the image index every second (1000ms)
     const advanceInterval = setInterval(() => {
       setcurrentImageIndex((prevIndex) => {
-        // If we're at the last image, don't advance
         if (prevIndex >= storyImages.length - 1) {
           return prevIndex;
         }
-        // Otherwise, advance to the next image
         return prevIndex + 1;
       });
     }, 5000);
 
-    // Clean up the interval on unmount
     return () => clearInterval(advanceInterval);
   }, [data.user.storyImages]);
 
@@ -49,10 +46,12 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data }) => {
 
   return (
     <div className={styles.modalContainer}>
+      <div className={styles.exitBotton} onClick={handleClick}>
+        X
+      </div>
       <div
         className={styles.modalContent}
         style={{ backgroundImage: `url(${data.user.storyImages && data.user.storyImages[currentImageIndex]})` }}
-        // style={{ backgroundImage: `url("https://picsum.photos/seed/0ehs1GqO/640/480")` }}
         onClick={nextImage}
       >
         <div className={styles.modalTopSection}>
@@ -82,9 +81,6 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data }) => {
             </div>
           </header>
         </div>
-        {/* <figure className={styles.imageContainer}>
-          <img src={data.user.storyImages && data.user.storyImages[currentImageIndex]} alt="Story" />
-        </figure> */}
         <footer className={styles.modalFooter}>
           <input
             type="text"

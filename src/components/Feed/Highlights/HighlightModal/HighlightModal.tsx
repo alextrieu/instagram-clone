@@ -8,9 +8,10 @@ type HighlightModalProps = {
 };
 
 const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) => {
-  const [currentImageIndex, setcurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [inputClicked, setInputClicked] = useState(false);
   const [inputValue, setInputVallue] = useState("");
+  const [isPaused, setIsPaused] = useState(false);
   const { storyImages = [] } = data.user;
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -24,19 +25,21 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) =>
 
   useEffect(() => {
     const advanceInterval = setInterval(() => {
-      setcurrentImageIndex((prevIndex) => {
-        if (prevIndex >= storyImages.length - 1) {
-          return prevIndex;
-        }
-        return prevIndex + 1;
-      });
+      if (!isPaused) {
+        setCurrentImageIndex((prevIndex) => {
+          if (prevIndex >= storyImages.length - 1) {
+            return prevIndex;
+          }
+          return prevIndex + 1;
+        });
+      }
     }, 5000);
 
     return () => clearInterval(advanceInterval);
-  }, [data.user.storyImages]);
+  }, [isPaused, storyImages]);
 
-  function nextImage() {
-    setcurrentImageIndex((prevIndex) => {
+  function handleNextImage() {
+    setCurrentImageIndex((prevIndex) => {
       if (prevIndex >= storyImages.length - 1) {
         return prevIndex;
       }
@@ -52,12 +55,12 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) =>
       <div
         className={styles.modalContent}
         style={{ backgroundImage: `url(${data.user.storyImages && data.user.storyImages[currentImageIndex]})` }}
-        onClick={nextImage}
+        onClick={handleNextImage}
       >
         <div className={styles.modalTopSection}>
           <div className={styles.progressContainer}>
             {data.user.storyImages &&
-              data.user.storyImages.map((image, index) => (
+              data.user.storyImages.map((_, index) => (
                 <div
                   key={index}
                   className={styles.progressBar}
@@ -72,10 +75,16 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) =>
             <div className={styles.userDetails}>
               <img src={data.user.profilePic} alt="User Profile" />
               <p>{data.user.username}</p>
-              <p>4 hr</p>
+              <p className={styles.timeStamp}>4 hr</p>
             </div>
-            <div className={styles.modalControls}>
-              <i className="fa-solid fa-play"></i>
+            <div
+              className={styles.modalControls}
+              onClick={(event) => {
+                event.stopPropagation();
+                setIsPaused((prev) => !prev);
+              }}
+            >
+              {!isPaused ? <i className="fa-solid fa-pause"></i> : <i className="fa-solid fa-play"></i>}
               <i className="fa-solid fa-volume-xmark"></i>
               <i className="fa-solid fa-ellipsis"></i>
             </div>

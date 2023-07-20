@@ -30,7 +30,7 @@
 
 @media (min-width: 800px) {
   .modalContent {
-    height: 90vh;
+    height: 95vh;
   }
 }
 
@@ -64,8 +64,9 @@
   align-self: center;
 }
 
-.userDetails > p:last-child {
+.timeStamp {
   color: gray;
+  font-weight: 400;
 }
 
 .progressContainer {

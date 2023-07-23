@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Post } from "../../../../types/PostTypes";
 import styles from "./HighlightModal.module.css";
 
 type HighlightModalProps = {
   data: Post;
   handleClick: React.MouseEventHandler<HTMLDivElement>;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) => {
+const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick, setModalOpen }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [inputClicked, setInputClicked] = useState(false);
   const [inputValue, setInputVallue] = useState("");
   const [isPaused, setIsPaused] = useState(false);
   const { storyImages = [] } = data.user;
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const remainingTimeRef = useRef(5000);
+  const startTimeRef = useRef(Date.now());
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
@@ -23,28 +27,85 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) =>
     setInputClicked((prev) => !prev);
   }
 
-  useEffect(() => {
-    const advanceInterval = setInterval(() => {
-      if (!isPaused) {
-        setCurrentImageIndex((prevIndex) => {
-          if (prevIndex >= storyImages.length - 1) {
-            return prevIndex;
-          }
-          return prevIndex + 1;
-        });
-      }
-    }, 5000);
-
-    return () => clearInterval(advanceInterval);
-  }, [isPaused, storyImages]);
-
-  function handleNextImage() {
+  const advance = () => {
     setCurrentImageIndex((prevIndex) => {
       if (prevIndex >= storyImages.length - 1) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+        setModalOpen(false);
         return prevIndex;
       }
       return prevIndex + 1;
     });
+
+    startTimeRef.current = Date.now();
+    remainingTimeRef.current = 5000;
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(advance, remainingTimeRef.current);
+  };
+
+  useEffect(() => {
+    if (!isPaused && !timeoutRef.current) {
+      timeoutRef.current = setTimeout(advance, remainingTimeRef.current);
+    }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+  }, [isPaused, storyImages, setModalOpen]);
+
+  const handlePausePlay = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.stopPropagation();
+    if (isPaused) {
+      setIsPaused(false);
+      startTimeRef.current = Date.now();
+    } else {
+      setIsPaused(true);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+        remainingTimeRef.current -= Date.now() - startTimeRef.current;
+      }
+    }
+  };
+
+  function handleNextImage() {
+    setCurrentImageIndex((prevIndex) => {
+      if (prevIndex >= storyImages.length - 1) {
+        remainingTimeRef.current = 5000;
+        setIsPaused(false);
+        return prevIndex;
+      }
+      setIsPaused(false);
+      remainingTimeRef.current = 5000;
+      return prevIndex + 1;
+    });
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(advance, remainingTimeRef.current);
+  }
+
+  function handlePreviousImage() {
+    setCurrentImageIndex((prevIndex) => {
+      let newIndex = prevIndex - 1;
+      if (newIndex < 0) {
+        return newIndex + 1;
+      } else {
+        remainingTimeRef.current = 5000;
+        setIsPaused(false);
+        return newIndex;
+      }
+    });
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(advance, remainingTimeRef.current);
   }
 
   return (
@@ -52,11 +113,17 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) =>
       <div className={styles.exitBotton} onClick={handleClick}>
         X
       </div>
+
       <div
         className={styles.modalContent}
         style={{ backgroundImage: `url(${data.user.storyImages && data.user.storyImages[currentImageIndex]})` }}
-        onClick={handleNextImage}
       >
+        <div className={styles.previousImage} onClick={handlePreviousImage}>
+          <i className="fa-solid fa-arrow-left"></i>
+        </div>
+        <div className={styles.nextImage} onClick={handleNextImage}>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
         <div className={styles.modalTopSection}>
           <div className={styles.progressContainer}>
             {data.user.storyImages &&
@@ -77,14 +144,8 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) =>
               <p>{data.user.username}</p>
               <p className={styles.timeStamp}>4 hr</p>
             </div>
-            <div
-              className={styles.modalControls}
-              onClick={(event) => {
-                event.stopPropagation();
-                setIsPaused((prev) => !prev);
-              }}
-            >
-              {!isPaused ? <i className="fa-solid fa-pause"></i> : <i className="fa-solid fa-play"></i>}
+            <div className={styles.modalControls} onClick={handlePausePlay}>
+              {isPaused ? <i className="fa-solid fa-play"></i> : <i className="fa-solid fa-pause"></i>}
               <i className="fa-solid fa-volume-xmark"></i>
               <i className="fa-solid fa-ellipsis"></i>
             </div>
@@ -95,7 +156,7 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick }) =>
             type="text"
             placeholder={`Reply to ${data.user.username}...`}
             onClick={handleInputClicked}
-            onChange={(e) => handleInputChange(e)}
+            onChange={handleInputChange}
             value={inputValue}
           />
           {!inputClicked && inputValue.length === 0 && (

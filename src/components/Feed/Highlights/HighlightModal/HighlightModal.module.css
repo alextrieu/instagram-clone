@@ -13,7 +13,6 @@
 }
 
 .modalContent {
-  border: 1px solid white;
   border-radius: 8px;
   height: 75vh;
   width: 400px;
@@ -26,6 +25,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
 }
 
 @media (min-width: 800px) {
@@ -47,6 +47,10 @@
 .modalControls {
   gap: 15px;
   align-items: center;
+}
+
+.modalControls > i {
+  cursor: pointer;
 }
 
 .userDetails {
@@ -71,7 +75,7 @@
 
 .progressContainer {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 100%;
   height: 3px;
   margin-bottom: 15px;
@@ -131,4 +135,18 @@
   font-size: 1.6rem;
   cursor: pointer;
   font-weight: bold;
+}
+
+.previousImage {
+  position: absolute;
+  right: 460px;
+  top: 42.5vh;
+  cursor: pointer;
+}
+
+.nextImage {
+  position: absolute;
+  left: 460px;
+  top: 42.5vh;
+  cursor: pointer;
 }

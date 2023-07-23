@@ -29,7 +29,7 @@ const Highlights: React.FC<HighlightProps> = ({ data }) => {
         </button>
       </header>
 
-      {modalOpen && <HighlightModal data={data} handleClick={handleClick} />}
+      {modalOpen && <HighlightModal data={data} handleClick={handleClick} setModalOpen={setModalOpen} />}
     </div>
   );
 };

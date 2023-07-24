@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Post } from "../../../../types/PostTypes";
 import styles from "./HighlightModal.module.css";
+import ProgressBar from "./ProgressBar";
+import Header from "./Header";
+import Footer from "./Footer";
 
 type HighlightModalProps = {
   data: Post;
@@ -11,17 +14,12 @@ type HighlightModalProps = {
 const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick, setModalOpen }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [inputClicked, setInputClicked] = useState(false);
-  const [inputValue, setInputVallue] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [isPaused, setIsPaused] = useState(false);
   const { storyImages = [] } = data.user;
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<number | null>(null);
   const remainingTimeRef = useRef(5000);
   const startTimeRef = useRef(Date.now());
-
-  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const value = event.target.value;
-    setInputVallue(value);
-  }
 
   function handleInputClicked() {
     setInputClicked((prev) => !prev);
@@ -30,7 +28,9 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick, setM
   const advance = () => {
     setCurrentImageIndex((prevIndex) => {
       if (prevIndex >= storyImages.length - 1) {
-        clearTimeout(timeoutRef.current);
+        if (timeoutRef.current !== null) {
+          clearTimeout(timeoutRef.current);
+        }
         timeoutRef.current = null;
         setModalOpen(false);
         return prevIndex;
@@ -125,48 +125,16 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick, setM
           <i className="fa-solid fa-arrow-right"></i>
         </div>
         <div className={styles.modalTopSection}>
-          <div className={styles.progressContainer}>
-            {data.user.storyImages &&
-              data.user.storyImages.map((_, index) => (
-                <div
-                  key={index}
-                  className={styles.progressBar}
-                  style={{
-                    backgroundColor:
-                      index < currentImageIndex ? "white" : index === currentImageIndex ? "white" : "gray",
-                  }}
-                ></div>
-              ))}
-          </div>
-          <header className={styles.modalHeader}>
-            <div className={styles.userDetails}>
-              <img src={data.user.profilePic} alt="User Profile" />
-              <p>{data.user.username}</p>
-              <p className={styles.timeStamp}>4 hr</p>
-            </div>
-            <div className={styles.modalControls} onClick={handlePausePlay}>
-              {isPaused ? <i className="fa-solid fa-play"></i> : <i className="fa-solid fa-pause"></i>}
-              <i className="fa-solid fa-volume-xmark"></i>
-              <i className="fa-solid fa-ellipsis"></i>
-            </div>
-          </header>
+          <ProgressBar storyImages={data.user.storyImages || []} currentImageIndex={currentImageIndex} />
+          <Header user={data.user} handlePausePlay={handlePausePlay} isPaused={isPaused} />
         </div>
-        <footer className={styles.modalFooter}>
-          <input
-            type="text"
-            placeholder={`Reply to ${data.user.username}...`}
-            onClick={handleInputClicked}
-            onChange={handleInputChange}
-            value={inputValue}
-          />
-          {!inputClicked && inputValue.length === 0 && (
-            <>
-              <i className="fa-regular fa-heart"></i>
-              <i className="fa-regular fa-paper-plane"></i>
-            </>
-          )}
-          {inputValue.length !== 0 && <button className={styles.highlightCommentBtn}>Send</button>}
-        </footer>
+        <Footer
+          handleInputClicked={handleInputClicked}
+          user={data.user}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          inputClicked={inputClicked}
+        />
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ type HighlightProps = {
 };
 
 const Highlights: React.FC<HighlightProps> = ({ data }) => {
-  let hasActiveStory = true;
+  const [hasActiveStory, setHasActiveStory] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleClick: React.MouseEventHandler<HTMLDivElement> = () => {
@@ -22,14 +22,21 @@ const Highlights: React.FC<HighlightProps> = ({ data }) => {
     <div className={styles.highlightWrapper}>
       <header className={styles.highlightContainer} onClick={handleClick}>
         <button className={styles.highlightBtn}>
-          <div className={hasActiveStory && styles.gradientBorder}>
+          <div className={hasActiveStory ? styles.gradientBorder : styles.noGradiantBorder}>
             <HighlightCover data={data} />
           </div>
           <HighlightTitle data={data} />
         </button>
       </header>
 
-      {modalOpen && <HighlightModal data={data} handleClick={handleClick} setModalOpen={setModalOpen} />}
+      {modalOpen && (
+        <HighlightModal
+          data={data}
+          handleClick={handleClick}
+          setModalOpen={setModalOpen}
+          setHasActiveStory={setHasActiveStory}
+        />
+      )}
     </div>
   );
 };

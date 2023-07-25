@@ -9,9 +9,10 @@ type HighlightModalProps = {
   data: Post;
   handleClick: React.MouseEventHandler<HTMLDivElement>;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setHasActiveStory: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick, setModalOpen }) => {
+const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick, setModalOpen, setHasActiveStory }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [inputClicked, setInputClicked] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -51,13 +52,17 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick, setM
       timeoutRef.current = setTimeout(advance, remainingTimeRef.current);
     }
 
+    if (currentImageIndex >= storyImages.length - 1) {
+      setHasActiveStory(false);
+    }
+
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
       }
     };
-  }, [isPaused, storyImages, setModalOpen]);
+  }, [isPaused, storyImages, setModalOpen, currentImageIndex]);
 
   const handlePausePlay = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.stopPropagation();
@@ -113,7 +118,6 @@ const HighlightModal: React.FC<HighlightModalProps> = ({ data, handleClick, setM
       <div className={styles.exitBotton} onClick={handleClick}>
         X
       </div>
-
       <div
         className={styles.modalContent}
         style={{ backgroundImage: `url(${data.user.storyImages && data.user.storyImages[currentImageIndex]})` }}

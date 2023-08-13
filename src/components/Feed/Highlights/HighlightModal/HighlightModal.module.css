@@ -1,0 +1,226 @@
+.modalContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(35, 35, 35);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modalContent {
+  border-radius: 8px;
+  height: 75vh;
+  width: 400px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+@media (min-width: 800px) {
+  .modalContent {
+    height: 95vh;
+  }
+}
+
+.modalHeader,
+.userDetails,
+.modalControls {
+  display: flex;
+}
+
+.modalHeader {
+  justify-content: space-between;
+}
+
+.modalControls {
+  gap: 15px;
+  align-items: center;
+}
+
+.modalControls > i {
+  cursor: pointer;
+}
+
+.userDetails {
+  gap: 10px;
+}
+
+.userDetails > img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.userDetails > p {
+  font-size: 0.875rem;
+  align-self: center;
+}
+
+.storyUserName {
+  font-weight: bold;
+}
+
+.timeStamp {
+  color: gray;
+  font-weight: 400;
+}
+
+.progressContainer {
+  display: flex;
+  /* justify-content: space-between; */
+  width: 100%;
+  height: 3px;
+  margin-bottom: 15px;
+}
+
+.progressBar {
+  flex: 1;
+  margin-right: 4px;
+}
+
+.progressBar:last-child {
+  margin-right: 0;
+}
+
+.modalFooter {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  position: relative;
+}
+
+.highlightCommentBtn {
+  position: absolute;
+  top: 9px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-weight: bolder;
+}
+
+.modalFooter > input {
+  flex: 1;
+  height: 35px;
+  border-radius: 12px;
+  outline: none;
+  border: 1px solid white;
+  background: transparent;
+  padding-left: 15px;
+}
+
+.modalFooter > input::placeholder {
+  color: white;
+}
+
+.modalFooter > i {
+  font-size: 1.25rem;
+}
+
+.exitButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 8px;
+  margin-top: 8px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.logo img {
+  width: 120px;
+}
+
+.previousImage {
+  position: absolute;
+  right: 430px;
+  top: 30%;
+  cursor: pointer;
+}
+
+.nextImage {
+  position: absolute;
+  left: 430px;
+  top: 30%;
+  cursor: pointer;
+}
+
+.previewOne,
+.previewTwo {
+  width: 166px;
+  height: 295px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.previewOne::before,
+.previewTwo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2); /* This is a half-transparent black */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.previewUser {
+  font-weight: bold;
+}
+
+.preview {
+  display: flex;
+  gap: 50px;
+}
+
+.borderedImage {
+  display: inline-block; /* To limit the container's size to the image's size */
+  padding: 2px; /* This creates the gap. Adjust the value for a bigger or smaller gap. */
+  background-color: transparent; /* This color will be visible in the gap. Adjust as needed. */
+  border: 1.5px solid gray;
+  border-radius: 100%;
+  margin-bottom: 5px;
+}
+
+.previewUserPic {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+}
+
+.leftModalContainer,
+.rightModalContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

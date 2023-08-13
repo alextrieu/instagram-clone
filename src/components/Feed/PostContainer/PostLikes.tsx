@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./PostContainer.module.css";
 import { User } from "../../../types/PostTypes";
+import LikesStatistics from "./LikesStatistics";
 
 type PostLikesProps = {
   data: User[];
@@ -16,14 +17,9 @@ const PostLikes: React.FC<PostLikesProps> = ({ data }) => {
           </button>
         ))}
       </div>
-      <div className={styles.likesStats}>
-        <span>Liked by </span>
-        <button className={styles.likerUsernameButton}>{data[0].username}</button>
-        {" and "}
-        <button className={styles.otherLikersButton}>
-          <span>others</span>
-        </button>
-      </div>
+      {data.slice(0, 1).map((data, index) => {
+        return <LikesStatistics data={data} key={index} />;
+      })}
     </div>
   );
 };

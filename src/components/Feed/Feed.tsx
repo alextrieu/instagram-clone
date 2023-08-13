@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Feed.module.css";
 import { Post } from "../../types/PostTypes";
 
@@ -10,11 +10,20 @@ type FeedProps = {
 };
 
 const Feed: React.FC<FeedProps> = ({ data }) => {
+  const [activeHighlightIndex, setActiveHighlightIndex] = useState<number | null>(null);
+
   return (
     <div className={styles.feed}>
       <div className={styles.highlightFeed}>
         {data.slice(0, 8).map((obj, index) => (
-          <Highlights key={index} data={obj} />
+          <Highlights
+            key={index}
+            data={obj}
+            index={index}
+            setActiveHighlightIndex={setActiveHighlightIndex}
+            activeIndex={activeHighlightIndex}
+            allHighlights={data}
+          />
         ))}
       </div>
       <ul className={styles.postList}>

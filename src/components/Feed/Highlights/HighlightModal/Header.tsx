@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ user, handlePausePlay, isPaused }) => (
   <header className={styles.modalHeader}>
     <div className={styles.userDetails}>
       <img src={user.profilePic} alt="User Profile" />
-      <p>{user.username}</p>
+      <p className={styles.storyUserName}>{user.username}</p>
       <p className={styles.timeStamp}>4 hr</p>
     </div>
     <div className={styles.modalControls} onClick={handlePausePlay}>

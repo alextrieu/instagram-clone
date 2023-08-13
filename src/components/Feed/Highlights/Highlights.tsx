@@ -8,13 +8,18 @@ import HighlightModal from "./HighlightModal/HighlightModal";
 
 type HighlightProps = {
   data: Post;
+  activeIndex: number | null;
+  allHighlights: Post[];
+  index: number;
+  setActiveHighlightIndex: React.Dispatch<React.SetStateAction<null | number>>;
 };
 
-const Highlights: React.FC<HighlightProps> = ({ data }) => {
+const Highlights: React.FC<HighlightProps> = ({ data, setActiveHighlightIndex, activeIndex, allHighlights, index }) => {
   const [hasActiveStory, setHasActiveStory] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleClick: React.MouseEventHandler<HTMLDivElement> = () => {
+    setActiveHighlightIndex(index);
     setModalOpen((prev) => !prev);
   };
 
@@ -35,6 +40,10 @@ const Highlights: React.FC<HighlightProps> = ({ data }) => {
           handleClick={handleClick}
           setModalOpen={setModalOpen}
           setHasActiveStory={setHasActiveStory}
+          hasActiveStory={hasActiveStory}
+          activeIndex={activeIndex}
+          allHighlights={allHighlights}
+          setActiveHighlightIndex={setActiveHighlightIndex}
         />
       )}
     </div>

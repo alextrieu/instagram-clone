@@ -68,6 +68,10 @@
   align-self: center;
 }
 
+.storyUserName {
+  font-weight: bold;
+}
+
 .timeStamp {
   color: gray;
   font-weight: 400;
@@ -126,7 +130,7 @@
   font-size: 1.25rem;
 }
 
-.exitBotton {
+.exitButton {
   position: absolute;
   top: 0;
   right: 0;
@@ -137,16 +141,86 @@
   font-weight: bold;
 }
 
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.logo img {
+  width: 120px;
+}
+
 .previousImage {
   position: absolute;
-  right: 460px;
-  top: 42.5vh;
+  right: 430px;
+  top: 30%;
   cursor: pointer;
 }
 
 .nextImage {
   position: absolute;
-  left: 460px;
-  top: 42.5vh;
+  left: 430px;
+  top: 30%;
   cursor: pointer;
+}
+
+.previewOne,
+.previewTwo {
+  width: 166px;
+  height: 295px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.previewOne::before,
+.previewTwo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2); /* This is a half-transparent black */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.previewUser {
+  font-weight: bold;
+}
+
+.preview {
+  display: flex;
+  gap: 50px;
+}
+
+.borderedImage {
+  display: inline-block; /* To limit the container's size to the image's size */
+  padding: 2px; /* This creates the gap. Adjust the value for a bigger or smaller gap. */
+  background-color: transparent; /* This color will be visible in the gap. Adjust as needed. */
+  border: 1.5px solid gray;
+  border-radius: 100%;
+  margin-bottom: 5px;
+}
+
+.previewUserPic {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+}
+
+.leftModalContainer,
+.rightModalContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

@@ -17,6 +17,7 @@ export type CurrentUser = Pick<User, "username" | "profilePic" | "name">;
 export type SuggestUser = User;
 
 export type Post = {
+  id: string;
   user: User;
   location: string;
   image: string;

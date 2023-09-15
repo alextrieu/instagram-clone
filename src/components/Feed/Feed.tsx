@@ -17,15 +17,17 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
       <div className={styles.highlightFeed}>
         {data.slice(0, 8).map((obj, index) => (
           <Highlights
-            key={index}
+            key={obj.id}
             data={obj}
             index={index}
             setActiveHighlightIndex={setActiveHighlightIndex}
-            activeIndex={activeHighlightIndex}
+            activeHighlightIndex={activeHighlightIndex}
             allHighlights={data}
+            id={obj.id}
           />
         ))}
       </div>
+
       <ul className={styles.postList}>
         {data.map((post, index) => (
           <li key={index} className={styles.postListItem}>

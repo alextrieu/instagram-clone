@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { Post, CurrentUser, SuggestUser } from "../types/PostTypes";
+import { v4 as uuidv4 } from "uuid";
 
 export const generateCurrentUser = (): CurrentUser => {
   return {
@@ -19,6 +20,7 @@ export const generateSuggestUser = (): SuggestUser => {
 
 const generatePostData = (): Post => {
   return {
+    id: uuidv4(),
     user: {
       username: faker.internet.userName().toLocaleLowerCase(),
       profilePic: faker.image.avatar(),

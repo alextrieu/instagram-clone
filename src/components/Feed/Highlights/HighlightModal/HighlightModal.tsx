@@ -4,7 +4,7 @@ import styles from "./HighlightModal.module.css";
 import ProgressBar from "./ProgressBar";
 import Header from "./Header";
 import Footer from "./Footer";
-import Logo from "../../../../../public/assets/Instagram-Wordmark-White-Logo.wine.png";
+import Logo from "../../../../assets/Instagram-Wordmark-White-Logo.wine.png";
 import HighlightPreview from "./HighlightPreview";
 
 type HighlightModalProps = {
@@ -12,10 +12,11 @@ type HighlightModalProps = {
   handleClick: React.MouseEventHandler<HTMLDivElement>;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setHasActiveStory: React.Dispatch<React.SetStateAction<boolean>>;
-  hasActiveStory: boolean;
-  activeIndex: number | null;
+  activeHighlightIndex: number;
   allHighlights: Post[];
   setActiveHighlightIndex: React.Dispatch<React.SetStateAction<number | null>>;
+  id: string;
+  updateActiveStatus: any;
 };
 
 const HighlightModal: React.FC<HighlightModalProps> = ({
@@ -23,10 +24,11 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
   handleClick,
   setModalOpen,
   setHasActiveStory,
-  hasActiveStory,
-  activeIndex,
+  activeHighlightIndex,
   setActiveHighlightIndex,
   allHighlights,
+  updateActiveStatus,
+  id,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [inputClicked, setInputClicked] = useState(false);
@@ -72,6 +74,7 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
 
     if (currentImageIndex >= storyImages.length - 1) {
       setHasActiveStory(false);
+      updateActiveStatus(id, false);
     }
 
     return () => {
@@ -80,7 +83,7 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
         timeoutRef.current = null;
       }
     };
-  }, [isPaused, storyImages, setModalOpen, currentImageIndex]);
+  }, [isPaused, storyImages, setModalOpen, currentImageIndex, updateActiveStatus, id]);
 
   useEffect(() => {
     localStorage.setItem("index", JSON.stringify(lastViewedImageIndex));
@@ -146,11 +149,17 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
     timeoutRef.current = setTimeout(advance, remainingTimeRef.current);
   }
 
-  const leftNeighbor1 = allHighlights[activeIndex - 2];
-  const leftNeighbor2 = allHighlights[activeIndex - 1];
+  const leftNeighbor1 = allHighlights[activeHighlightIndex - 2];
+  const leftNeighbor2 = allHighlights[activeHighlightIndex - 1];
 
-  const rightNeighbor1 = allHighlights[activeIndex + 1];
-  const rightNeighbor2 = allHighlights[activeIndex + 2];
+  const rightNeighbor1 = allHighlights[activeHighlightIndex + 1];
+  const rightNeighbor2 = allHighlights[activeHighlightIndex + 2];
+
+  const handlePreviewClick = (newActiveIndex: number) => {
+    setActiveHighlightIndex(newActiveIndex);
+    setModalOpen(false);
+    setModalOpen(true);
+  };
 
   return (
     <div className={styles.modalContainer}>
@@ -164,11 +173,24 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
       </div>
       <div
         className={styles.modalContent}
-        style={{ backgroundImage: `url(${data.user.storyImages && data.user.storyImages[currentImageIndex]})` }}
+        // style={{ backgroundImage: `url(${data.user.storyImages && data.user.storyImages[currentImageIndex]})` }}
+        style={{
+          backgroundImage: `url(${
+            allHighlights[activeHighlightIndex].user &&
+            allHighlights[activeHighlightIndex].user.storyImages[currentImageIndex]
+          })`,
+        }}
       >
         <div className={styles.previousImage}>
           <div className={styles.leftModalContainer}>
-            {leftNeighbor1 && leftNeighbor2 && <HighlightPreview neighbor1={leftNeighbor1} neighbor2={leftNeighbor2} />}
+            {leftNeighbor1 && leftNeighbor2 && (
+              <HighlightPreview
+                leftNeighbor1={leftNeighbor1}
+                leftNeighbor2={leftNeighbor2}
+                activeHighlightIndex={activeHighlightIndex}
+                handlePreviewClick={handlePreviewClick}
+              />
+            )}
             <i className="fa-solid fa-arrow-left" onClick={handlePreviousImage}></i>
           </div>
         </div>
@@ -176,17 +198,26 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
           <div className={styles.rightModalContainer}>
             <i className="fa-solid fa-arrow-right" onClick={handleNextImage}></i>
             {rightNeighbor1 && rightNeighbor2 && (
-              <HighlightPreview neighbor1={rightNeighbor1} neighbor2={rightNeighbor2} />
+              <HighlightPreview
+                rightNeighbor1={rightNeighbor1}
+                rightNeighbor2={rightNeighbor2}
+                handlePreviewClick={handlePreviewClick}
+                activeHighlightIndex={activeHighlightIndex}
+              />
             )}
           </div>
         </div>
         <div className={styles.modalTopSection}>
           <ProgressBar storyImages={data.user.storyImages || []} currentImageIndex={currentImageIndex} />
-          <Header user={data.user} handlePausePlay={handlePausePlay} isPaused={isPaused} />
+          <Header
+            user={allHighlights[activeHighlightIndex].user}
+            handlePausePlay={handlePausePlay}
+            isPaused={isPaused}
+          />
         </div>
         <Footer
           handleInputClicked={handleInputClicked}
-          user={data.user}
+          user={allHighlights[activeHighlightIndex].user}
           inputValue={inputValue}
           setInputValue={setInputValue}
           inputClicked={inputClicked}

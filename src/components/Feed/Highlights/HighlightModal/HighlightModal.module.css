@@ -188,7 +188,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2); /* This is a half-transparent black */
+  background-color: rgba(0, 0, 0, 0.3);
   pointer-events: none;
   z-index: 0;
 }
@@ -203,9 +203,9 @@
 }
 
 .borderedImage {
-  display: inline-block; /* To limit the container's size to the image's size */
-  padding: 2px; /* This creates the gap. Adjust the value for a bigger or smaller gap. */
-  background-color: transparent; /* This color will be visible in the gap. Adjust as needed. */
+  display: inline-block;
+  padding: 2px;
+  background-color: transparent;
   border: 1.5px solid gray;
   border-radius: 100%;
   margin-bottom: 5px;

@@ -19,6 +19,8 @@ export type SuggestUser = User;
 export type Post = {
   id: string;
   user: User;
+  viewed: boolean;
+  currentSegment: number;
   location: string;
   image: string;
   caption: string;

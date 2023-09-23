@@ -1,79 +1,45 @@
-import React, { useState, useEffect } from "react";
-import styles from "./Highlights.module.css";
+// import React, { useState } from "react";
+// import styles from "./Highlights.module.css";
 
-import HighlightCover from "./HighlightCover/HighlightCover";
-import HighlightTitle from "./HighlightTitle/HighlightTitle";
-import { Post } from "../../../types/PostTypes";
-import HighlightModal from "./HighlightModal/HighlightModal";
+// import HighlightCover from "./HighlightCover/HighlightCover";
+// import HighlightTitle from "./HighlightTitle/HighlightTitle";
+// import { Post } from "../../../types/PostTypes";
+// import HighlightModal from "./HighlightModal/HighlightModal";
 
-type HighlightProps = {
-  data: Post;
-  activeHighlightIndex: number | null;
-  allHighlights: Post[];
-  index: number;
-  setActiveHighlightIndex: React.Dispatch<React.SetStateAction<null | number>>;
-  id: string;
-};
+// const Highlights: React.FC = ({ data, allPosts }) => {
+//   const [storiesData, setStoriesData] = useState(data);
+//   const [currentStory, setCurrentStory] = useState<Post | null>(null);
+//   const [hasNavigatedThroughEntirety, setHasNavigatedThroughEntirety] = useState(false);
 
-const Highlights: React.FC<HighlightProps> = ({
-  data,
-  setActiveHighlightIndex,
-  activeHighlightIndex,
-  allHighlights,
-  index,
-  id,
-}) => {
-  const [hasActiveStory, setHasActiveStory] = useState(true);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [activeStories, setActiveStories] = useState<Record<string, boolean>>({});
+//   const openStory = (story) => {
+//     setCurrentStory(story);
+//     setHasNavigatedThroughEntirety(false);
+//   };
 
-  const handleClick: React.MouseEventHandler<HTMLDivElement> = () => {
-    setActiveHighlightIndex(index);
-    setModalOpen((prev) => !prev);
-  };
+//   return (
+//     <div className={styles.highlightWrapper}>
+//       <header className={styles.highlightContainer}>
+//         <button className={styles.highlightBtn}>
+//           <div
+//             className={storiesData.viewed ? styles.noGradientBorder : styles.gradientBorder}
+//             onClick={() => openStory(storiesData)}
+//           >
+//             <HighlightCover data={storiesData} />
+//           </div>
+//           <HighlightTitle data={storiesData} />
+//         </button>
+//       </header>
 
-  useEffect(() => {
-    const initialStories = {};
-    allHighlights.forEach((h) => {
-      initialStories[h.id] = true;
-    });
-    setActiveStories(initialStories);
-  }, [allHighlights]);
+//       {currentStory && (
+//         <HighlightModal
+//           setCurrentStory={setCurrentStory}
+//           setStoriesData={setStoriesData}
+//           currentStory={currentStory}
+//           allPosts={allPosts}
+//         />
+//       )}
+//     </div>
+//   );
+// };
 
-  const updateActiveStatus = (highlightId: string, status: boolean) => {
-    setActiveStories((prev) => ({
-      ...prev,
-      [highlightId]: status,
-    }));
-  };
-
-  return (
-    <div className={styles.highlightWrapper}>
-      <header className={styles.highlightContainer} onClick={handleClick}>
-        <button className={styles.highlightBtn}>
-          {/* <div className={hasActiveStory ? styles.gradientBorder : styles.noGradiantBorder}> */}
-          <div className={activeStories[id] ? styles.gradientBorder : styles.noGradiantBorder}>
-            <HighlightCover data={data} />
-          </div>
-          <HighlightTitle data={data} />
-        </button>
-      </header>
-
-      {modalOpen && (
-        <HighlightModal
-          data={data}
-          handleClick={handleClick}
-          setModalOpen={setModalOpen}
-          setHasActiveStory={setHasActiveStory}
-          activeHighlightIndex={activeHighlightIndex}
-          allHighlights={allHighlights}
-          setActiveHighlightIndex={setActiveHighlightIndex}
-          updateActiveStatus={updateActiveStatus}
-          id={id}
-        />
-      )}
-    </div>
-  );
-};
-
-export default Highlights;
+// export default Highlights;

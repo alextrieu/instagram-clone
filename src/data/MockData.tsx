@@ -26,6 +26,8 @@ const generatePostData = (): Post => {
       profilePic: faker.image.avatar(),
       storyImages: Array.from({ length: 3 }, () => faker.image.url()),
     },
+    viewed: false,
+    currentSegment: 0,
     location: faker.location.city(),
     image: faker.image.url(),
     caption: faker.lorem.paragraph(3),

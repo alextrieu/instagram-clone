@@ -56,6 +56,9 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
 
     // Check to see if user has viewed all the stories
     if (!hasNavigatedThroughEntirety && currentStory) {
+      console.log(nextSegment);
+      console.log(currentStory.user.storyImages.length - 1);
+      console.log(nextSegment === currentStory.user.storyImages.length - 1);
       if (direction === "RIGHT" && nextSegment === currentStory.user.storyImages.length - 1) {
         setHasNavigatedThroughEntirety(true);
       } else if (
@@ -67,6 +70,10 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
       }
     }
   };
+
+  useEffect(() => {
+    setHasNavigatedThroughEntirety(false);
+  }, [currentStory]);
 
   const moveToPreviousStory = () => {
     if (hasNavigatedThroughEntirety) {
@@ -128,6 +135,7 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
 
     if (currentStory) {
       const currentIndex = currentStory.currentSegment;
+      console.log(hasNavigatedThroughEntirety);
 
       if (currentIndex === currentStory.user.storyImages.length - 1 || hasNavigatedThroughEntirety) {
         markStoryAsViewed();

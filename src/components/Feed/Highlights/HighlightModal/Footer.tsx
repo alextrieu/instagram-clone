@@ -17,7 +17,6 @@ const Footer: React.FC<FooterProps> = ({ user }) => {
   function handleInputChange(event) {
     const value = event.target.value;
     setInputValue(value);
-    console.log(value);
   }
 
   return (
@@ -35,7 +34,7 @@ const Footer: React.FC<FooterProps> = ({ user }) => {
           <i className="fa-regular fa-paper-plane"></i>
         </>
       )}
-      {inputValue.length !== 0 || (inputClicked && <button className={styles.highlightCommentBtn}>Send</button>)}
+      {(inputValue.length !== 0 || inputClicked) && <button className={styles.highlightCommentBtn}>Send</button>}
     </footer>
   );
 };

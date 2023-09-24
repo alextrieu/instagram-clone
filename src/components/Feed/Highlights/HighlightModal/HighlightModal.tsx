@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Post } from "../../../../types/PostTypes";
 import styles from "./HighlightModal.module.css";
 import ProgressBar from "./ProgressBar";
@@ -23,21 +23,43 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
   setTimerId,
 }) => {
   const [isPaused, setIsPaused] = useState(false);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [elapsedTime, setElapsedTime] = useState<number>(0);
 
-  const handlePausePlay = () => {
+  const pauseStory = () => {
     setIsPaused(true);
     if (timerId !== null) {
       clearTimeout(timerId);
+    }
+    const now = Date.now();
+    if (startTime) {
+      console.log(startTime);
+      const timeElapsed = now - startTime;
+      setElapsedTime((prev) => prev + timeElapsed);
     }
   };
 
   const resumeStory = () => {
     setIsPaused(false);
-    const id = setTimeout(() => {
-      navigateImage("RIGHT");
-    }, 2000);
+    const remainingTime = 4000 - elapsedTime;
+    const id = setTimeout(
+      () => {
+        navigateImage("RIGHT");
+      },
+      remainingTime > 0 ? remainingTime : 0
+    );
     setTimerId(id);
+    setStartTime(Date.now());
   };
+
+  // useEffect(() => {
+  //   setElapsedTime(0);
+  // }, [currentStory?.currentSegment]);
+
+  useEffect(() => {
+    setElapsedTime(0);
+    setStartTime(Date.now());
+  }, [currentStory]);
 
   return (
     <div className={styles.modalContainer}>
@@ -105,12 +127,7 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
           />
 
           {currentStory?.user && (
-            <Header
-              user={currentStory.user}
-              isPaused={isPaused}
-              handlePausePlay={handlePausePlay}
-              resumeStory={resumeStory}
-            />
+            <Header user={currentStory.user} isPaused={isPaused} pauseStory={pauseStory} resumeStory={resumeStory} />
           )}
         </div>
         <button onClick={() => navigateImage("LEFT")}>Previous</button>

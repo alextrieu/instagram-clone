@@ -20,7 +20,7 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
   useEffect(() => {
     const id = setTimeout(() => {
       navigateImage("RIGHT");
-    }, 2000);
+    }, 4000);
     setTimerId(id);
 
     return () => clearTimeout(id);

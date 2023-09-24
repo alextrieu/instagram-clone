@@ -9,11 +9,11 @@ type User = {
 type HeaderProps = {
   user: User;
   isPaused: boolean;
-  handlePausePlay: () => void;
+  pauseStory: () => void;
   resumeStory: () => void;
 };
 
-const Header: React.FC<HeaderProps> = ({ user, isPaused, handlePausePlay, resumeStory }) => {
+const Header: React.FC<HeaderProps> = ({ user, isPaused, pauseStory, resumeStory }) => {
   return (
     <header className={styles.modalHeader}>
       <div className={styles.userDetails}>
@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ user, isPaused, handlePausePlay, resume
         {isPaused ? (
           <i className="fa-solid fa-play" onClick={resumeStory}></i>
         ) : (
-          <i className="fa-solid fa-pause" onClick={handlePausePlay}></i>
+          <i className="fa-solid fa-pause" onClick={pauseStory}></i>
         )}
         <i className="fa-solid fa-volume-xmark"></i>
         <i className="fa-solid fa-ellipsis"></i>

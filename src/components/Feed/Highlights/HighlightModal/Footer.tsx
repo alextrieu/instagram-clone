@@ -14,7 +14,7 @@ const Footer: React.FC<FooterProps> = ({ user }) => {
     setInputClicked((prev) => !prev);
   }
 
-  function handleInputChange(event) {
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
     setInputValue(value);
   }

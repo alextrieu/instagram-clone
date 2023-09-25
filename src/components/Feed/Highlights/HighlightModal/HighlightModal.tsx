@@ -84,7 +84,7 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
             <Header user={currentStory.user} isPaused={isPaused} pauseStory={pauseStory} resumeStory={resumeStory} />
           )}
         </div>
-        <Footer user={currentStory.user} />
+        {currentStory && <Footer user={currentStory.user} />}
 
         <button onClick={() => navigateImage("LEFT")} className={styles.leftBtn}>
           <i className="fa-solid fa-circle-chevron-left"></i>

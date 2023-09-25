@@ -16,6 +16,8 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
   const [currentStory, setCurrentStory] = useState<Post | null>(null);
   const [hasNavigatedThroughEntirety, setHasNavigatedThroughEntirety] = useState(false);
   const [timerId, setTimerId] = useState<number | null>(null);
+  const [prevStories, setPrevStories] = useState<Post[] | null>(null);
+  const [nextStories, setNextStories] = useState<Post[] | null>(null);
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -27,9 +29,33 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
   }, [currentStory?.currentSegment]);
 
   const openStory = (story: Post) => {
+    const storyIndex = storiesData.findIndex((s) => s.id === story.id);
+    console.log(storyIndex);
+
+    const prevStories = storiesData.slice(Math.max(storyIndex - 2, 0), storyIndex);
+    // console.log(prevStories);
+    const nextStories = storiesData.slice(storyIndex + 1, storyIndex + 3);
+
+    setPrevStories(prevStories);
+    setNextStories(nextStories);
+
     setCurrentStory(story);
     setHasNavigatedThroughEntirety(false);
   };
+
+  useEffect(() => {
+    if (currentStory) {
+      const updatedStoryIndex = storiesData.findIndex((s) => s.id === currentStory.id);
+      console.log(updatedStoryIndex);
+      const prevStories = storiesData.slice(Math.max(updatedStoryIndex - 2, 0), updatedStoryIndex);
+      console.log(prevStories);
+
+      const nextStories = storiesData.slice(updatedStoryIndex + 1, updatedStoryIndex + 3);
+
+      setPrevStories(prevStories);
+      setNextStories(nextStories);
+    }
+  }, [currentStory]);
 
   const navigateImage = (direction: "LEFT" | "RIGHT") => {
     if (!currentStory || !currentStory.user.storyImages) return; // Check if storyImages is available
@@ -68,9 +94,9 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
     }
   };
 
-  useEffect(() => {
-    setHasNavigatedThroughEntirety(false);
-  }, [currentStory]);
+  // useEffect(() => {
+  //   setHasNavigatedThroughEntirety(false);
+  // }, [currentStory]);
 
   const moveToPreviousStory = () => {
     if (hasNavigatedThroughEntirety) {
@@ -91,6 +117,8 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
     } else {
       closeModal();
     }
+
+    setHasNavigatedThroughEntirety(false);
   };
 
   const moveToNextStory = () => {
@@ -109,6 +137,8 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
     } else {
       closeModal();
     }
+
+    setHasNavigatedThroughEntirety(false);
   };
 
   const markStoryAsViewed = () => {
@@ -168,6 +198,8 @@ const Feed: React.FC<FeedProps> = ({ data }) => {
             closeModal={closeModal}
             timerId={timerId}
             setTimerId={setTimerId}
+            prevStories={prevStories}
+            nextStories={nextStories}
           />
         )}
       </div>

@@ -6,6 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Logo from "../../../../assets/Instagram-Wordmark-White-Logo.wine.png";
 // import HighlightPreview from "./HighlightPreview";
+// import HighlightCover from "../HighlightCover/HighlightCover";
 
 type HighlightModalProps = {
   currentStory: Post | null;
@@ -13,6 +14,8 @@ type HighlightModalProps = {
   closeModal: () => void;
   timerId: number | null;
   setTimerId: React.Dispatch<React.SetStateAction<number | null>>;
+  prevStories: Post[] | null;
+  nextStories: Post[] | null;
 };
 
 const HighlightModal: React.FC<HighlightModalProps> = ({
@@ -21,6 +24,8 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
   closeModal,
   timerId,
   setTimerId,
+  prevStories,
+  nextStories,
 }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [startTime, setStartTime] = useState<number | null>(null);
@@ -92,6 +97,40 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
         <button onClick={() => navigateImage("RIGHT")} className={styles.rightBtn}>
           <i className="fa-solid fa-circle-chevron-right"></i>
         </button>
+
+        <div className={styles.leftSideContainer}>
+          {prevStories?.map((story) => (
+            <div
+              className={styles.leftSideUsers}
+              style={{
+                backgroundImage: `url(${story.user.storyImages && story.user.storyImages[0]})`,
+              }}
+            >
+              <div className={styles.userInfo}>
+                <img src={story.user.profilePic} />
+                <p className={styles.leftSideUserName}>{story.user.username}</p>
+                <p>1d</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.rightSideContainer}>
+          {nextStories?.map((story) => (
+            <div
+              className={styles.rightSideUsers}
+              style={{
+                backgroundImage: `url(${story.user.storyImages && story.user.storyImages[0]})`,
+              }}
+            >
+              <div className={styles.userInfo}>
+                <img src={story.user.profilePic} />
+                <p className={styles.rightSideUserName}>{story.user.username}</p>
+                <p>1d</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

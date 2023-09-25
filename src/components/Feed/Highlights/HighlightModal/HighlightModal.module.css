@@ -51,6 +51,71 @@
   right: -40px;
 }
 
+.leftSideContainer,
+.rightSideContainer {
+  position: absolute;
+  top: 32.5%;
+  display: flex;
+  gap: 20px;
+}
+
+.leftSideContainer {
+  left: -450px;
+}
+
+.rightSideContainer {
+  right: -450px;
+}
+
+.leftSideUsers,
+.rightSideUsers {
+  border: 1px solid gray;
+  height: 304px;
+  width: 171px;
+  display: flex;
+  align-items: center;
+  border-radius: 5%;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.userInfo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userInfo img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 2px;
+  background-image: none;
+  border: 1px solid grey;
+}
+
+/* .leftSideUsers img:nth-child(2),
+.rightSideUsers img:nth-child(2) {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+} */
+
+.leftSideUserName,
+.rightSideUserName {
+  font-weight: bold;
+}
+
 @media (min-width: 800px) {
   .modalContent {
     height: 95vh;

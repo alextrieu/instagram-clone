@@ -33,7 +33,6 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
     }
     const now = Date.now();
     if (startTime) {
-      console.log(startTime);
       const timeElapsed = now - startTime;
       setElapsedTime((prev) => prev + timeElapsed);
     }
@@ -51,10 +50,6 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
     setTimerId(id);
     setStartTime(Date.now());
   };
-
-  // useEffect(() => {
-  //   setElapsedTime(0);
-  // }, [currentStory?.currentSegment]);
 
   useEffect(() => {
     setElapsedTime(0);
@@ -91,8 +86,12 @@ const HighlightModal: React.FC<HighlightModalProps> = ({
         </div>
         <Footer user={currentStory.user} />
 
-        {/* <button onClick={() => navigateImage("LEFT")}>Previous</button>
-        <button onClick={() => navigateImage("RIGHT")}>RIGHT</button> */}
+        <button onClick={() => navigateImage("LEFT")} className={styles.leftBtn}>
+          <i className="fa-solid fa-circle-chevron-left"></i>
+        </button>
+        <button onClick={() => navigateImage("RIGHT")} className={styles.rightBtn}>
+          <i className="fa-solid fa-circle-chevron-right"></i>
+        </button>
       </div>
     </div>
   );

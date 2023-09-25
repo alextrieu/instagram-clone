@@ -28,6 +28,29 @@
   position: relative;
 }
 
+.leftBtn,
+.rightBtn {
+  position: absolute;
+  top: 50%;
+
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  color: inherit;
+}
+
+.leftBtn {
+  left: -40px;
+}
+
+.rightBtn {
+  right: -40px;
+}
+
 @media (min-width: 800px) {
   .modalContent {
     height: 95vh;

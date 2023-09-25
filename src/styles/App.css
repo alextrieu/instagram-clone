@@ -7,3 +7,8 @@
 .app-container {
   display: flex;
 }
+
+.fa-circle-chevron-left,
+.fa-circle-chevron-right {
+  font-size: 1.5rem;
+}
